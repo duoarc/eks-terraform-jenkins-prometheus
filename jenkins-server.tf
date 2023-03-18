@@ -13,7 +13,7 @@ data "aws_ami" "latest-amazon-linux-image" {
 
 resource "aws_instance" "alt3-server" {
   ami                         = data.aws_ami.latest-amazon-linux-image.id
-  instance_type               = var.instance_type
+  instance_type               = "t3.small"
   key_name                    = "jenkins-kp"
   subnet_id                   = aws_subnet.alt3-subnet1.id
   vpc_security_group_ids      = [aws_default_security_group.alt3-sg.id]

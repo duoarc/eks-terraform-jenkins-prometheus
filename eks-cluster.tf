@@ -1,18 +1,15 @@
-data "aws_subnets" "subnets" {
-  filter {
-    name   = "vpc-id"
-    values = [aws_vpc.alt3-vpc.id]
-  }
-}
+# data "aws_subnets" "subnets" {
+#   filter {
+#     name   = "vpc-id"
+#     values = [aws_vpc.alt3-vpc.id]
+#   }
+# }
 
-data "aws_subnet" "subnets_ids" {
-  for_each = toset(data.aws_subnets.subnets.ids)
-  id       = each.value
-}
+# data "aws_subnet" "subnets_ids" {
+#   for_each = toset(data.aws_subnets.subnets.ids)
+#   id       = each.value
+# }
 
-output "subnet_cidr_blocks" {
-  value = [for s in data.aws_subnet.subnets_ids : s.cidr_block]
-}
 
 module "eks" {
     source  = "terraform-aws-modules/eks/aws"
@@ -23,7 +20,7 @@ module "eks" {
     cluster_endpoint_public_access  = true
 
     vpc_id = aws_vpc.alt3-vpc.id
-    subnet_ids = "${data.aws_subnet.subnets_ids}"
+    subnet_ids = aws_subnet.subnets[*].id
     tags = {
         environment = "development"
         application = "alt3"
@@ -35,7 +32,7 @@ module "eks" {
             max_size = 4
             desired_size = 3
 
-            instance_types = ["t2.small"]
+            instance_types = [var.instance_type]
         }
     }
 }

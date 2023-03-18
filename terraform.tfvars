@@ -16,4 +16,4 @@ subnet_cidr_blocks = {
 }
 availability_zone   = "eu-west-2a"
 env                 = "dev"
-instance_type       = "t2.small"
+instance_type       = "t2.medium"

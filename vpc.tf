@@ -15,15 +15,20 @@ resource "aws_subnet" "alt3-subnet1" {
 }
 
 resource "aws_subnet" "subnets" {
-  for_each              = var.subnet_cidr_blocks
+  count = 3
+  cidr_block = cidrsubnet(var.vpc_cidr_block, 8, count.index)
+  vpc_id = aws_vpc.alt3-vpc.id
+  
+  
+  # for_each              = var.subnet_cidr_blocks
 
-  vpc_id                = aws_vpc.alt3-vpc.id
-  cidr_block            = each.value["cidr"]
-  availability_zone     = each.value["az"]
+  # vpc_id                = aws_vpc.alt3-vpc.id
+  # cidr_block            = each.value["cidr"]
+  # availability_zone     = each.value["az"]
 
-  tags = {
-    Name                = each.key
-  }
+  # tags = {
+  #   Name                = each.key
+  # }
 }
 
 
