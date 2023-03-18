@@ -1,5 +1,5 @@
 vpc_cidr_block = "172.20.0.0/16"
-subnet_cidr_block = "172.20.1.0"
+subnet_cidr_block = "172.20.1.0/24"
 subnet_cidr_blocks = {
   subnet_01 = {
     cidr = "172.20.2.0/24"

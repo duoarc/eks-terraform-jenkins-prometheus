@@ -23,7 +23,7 @@ module "eks" {
     cluster_endpoint_public_access  = true
 
     vpc_id = aws_vpc.alt3-vpc.id
-    subnet_ids = "${data.aws_subnet.subnets_ids.*.id}"
+    subnet_ids = "${data.aws_subnet.subnets_ids}"
     tags = {
         environment = "development"
         application = "alt3"
