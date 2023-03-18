@@ -10,4 +10,4 @@ variable "availability_zone" {}
 variable "env" {}
 variable "instance_type" {}
 
-domain_names = {domain_name = "mabdulrahman.cloud", subdomain_name = "terraform-test.mabdulrahman.cloud"}
+# domain_names = {domain_name = "mabdulrahman.cloud", subdomain_name = "terraform-test.mabdulrahman.cloud"}
