@@ -1,4 +1,4 @@
-vpc_cidr_block = {cidr_block = "172.20.0.0/16", name = "alt3-vpc"}
+vpc_cidr_block = "172.20.0.0/16"
 subnet_cidr_block = "172.20.1.0"
 subnet_cidr_blocks = {
   subnet_01 = {
