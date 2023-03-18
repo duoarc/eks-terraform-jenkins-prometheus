@@ -5,14 +5,14 @@ resource "aws_vpc" "alt3-vpc" {
   }
 }
 
-resource "aws_subnet" "alt3-subnet1" {
-  vpc_id            = aws_vpc.alt3-vpc.id
-  cidr_block        = var.subnet_cidr_block
-  availability_zone = var.availability_zone
-  tags = {
-    Name = "${var.env}-alt3-subnet1"
-  }
-}
+# resource "aws_subnet" "alt3-subnet1" {
+#   vpc_id            = aws_vpc.alt3-vpc.id
+#   cidr_block        = var.subnet_cidr_block
+#   availability_zone = var.availability_zone
+#   tags = {
+#     Name = "${var.env}-alt3-subnet1"
+#   }
+# }
 
 resource "aws_subnet" "subnets" {
   count = 3
