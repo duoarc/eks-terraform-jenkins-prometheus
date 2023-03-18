@@ -1,7 +1,7 @@
 data "aws_subnets" "subnets" {
   filter {
     name   = "vpc-id"
-    values = [var.vpc_id]
+    values = [aws_vpc.alt3-vpc.id]
   }
 }
 
@@ -11,7 +11,7 @@ data "aws_subnet" "subnets_ids" {
 }
 
 output "subnet_cidr_blocks" {
-  value = [for s in data.aws_subnet.subnet : s.cidr_block]
+  value = [for s in data.aws_subnet.subnets_ids : s.cidr_block]
 }
 
 module "eks" {

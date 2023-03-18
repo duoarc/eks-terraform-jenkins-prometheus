@@ -1,4 +1,5 @@
 variable "vpc_cidr_block" {}
+variable "subnet_cidr_block" {}
 variable "subnet_cidr_blocks" {
   description = "cidr, availability zone and name tag for the subnets"
   type = map(object({
