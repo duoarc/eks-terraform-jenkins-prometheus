@@ -1,4 +1,4 @@
-data "aws_subnet_ids" "subnet_ids" {
+data "aws_subnet_ids" "subnets" {
   vpc_id = aws_vpc.alt3-vpc.id
 }
 
