@@ -1,3 +1,7 @@
+data "aws_subnet_ids" "subnet_ids" {
+  vpc_id = aws_vpc.alt3-vpc.id
+}
+
 module "eks" {
     source  = "terraform-aws-modules/eks/aws"
     version = "~> 19.0"
@@ -7,7 +11,7 @@ module "eks" {
     cluster_endpoint_public_access  = true
 
     vpc_id = aws_vpc.alt3-vpc.id
-    subnet_ids = aws_subnet.subnets[for_each].id
+    subnet_ids = "${data.aws_subnet.subnets_ids.*.id}"
     tags = {
         environment = "development"
         application = "alt3"
