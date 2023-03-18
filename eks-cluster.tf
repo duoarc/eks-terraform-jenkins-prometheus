@@ -1,5 +1,17 @@
 data "aws_subnets" "subnets" {
-  vpc_id = aws_vpc.alt3-vpc.id
+  filter {
+    name   = "vpc-id"
+    values = [var.vpc_id]
+  }
+}
+
+data "aws_subnet" "subnets_ids" {
+  for_each = toset(data.aws_subnets.subnets.ids)
+  id       = each.value
+}
+
+output "subnet_cidr_blocks" {
+  value = [for s in data.aws_subnet.subnet : s.cidr_block]
 }
 
 module "eks" {
