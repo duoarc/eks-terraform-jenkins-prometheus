@@ -19,7 +19,7 @@ resource "aws_subnet" "subnets" {
   cidr_block = cidrsubnet(var.vpc_cidr_block, 8, count.index)
   vpc_id = aws_vpc.alt3-vpc.id
   availability_zone     = data.aws_availability_zones.available.names[count.index]
-  
+  map_public_ip_on_launch = true
   
   # for_each              = var.subnet_cidr_blocks
 
