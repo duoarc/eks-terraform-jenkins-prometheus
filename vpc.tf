@@ -18,9 +18,7 @@ resource "aws_subnet" "subnets" {
   count = 3
   cidr_block = cidrsubnet(var.vpc_cidr_block, 8, count.index)
   vpc_id = aws_vpc.alt3-vpc.id
-  
-  for_each              = var.subnet_cidr_blocks
-  availability_zone     = each.value["az"]
+  availability_zone     = data.aws_availability_zones.available.names[count.index]
   
   
   # for_each              = var.subnet_cidr_blocks
