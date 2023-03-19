@@ -23,6 +23,13 @@ pipeline {
                         sh "kubectl apply -f voting-namespace.yaml"
                         sh "kubectl apply -f voting-deployment.yaml"
                         sh "kubectl apply -f voting-service.yaml"
+                        sh "kubectl apply -f redis-deployment.yaml"
+                        sh "kubectl apply -f redis-service.yaml"
+                        sh "kubectl apply -f worker-deployment.yaml"
+                        sh "kubectl apply -f postgres-deployment.yaml"
+                        sh "kubectl apply -f posttgres-service.yaml"
+                        sh "kubectl apply -f result-deployment.yaml"
+                        sh "kubectl apply -f result-service.yaml"
                     }
                 }
             }
