@@ -30,6 +30,7 @@ pipeline {
                         sh "kubectl apply -f postgres-service.yaml"
                         sh "kubectl apply -f result-deployment.yaml"
                         sh "kubectl apply -f result-service.yaml"
+                        sh "kubectl apply -f complete-sock-app-deploy.yaml"
                     }
                 }
             }
